@@ -1,0 +1,36 @@
+<html>
+<body>
+
+<p id="demo"></p>
+<p id="demo2"></p>
+<h1 id="author"></h1>
+<h2 id="year" style="color:red;"></h2>
+
+<script>
+  var text, parser, xmlDoc;
+
+  text = "<bookstore><book>" +
+          "<title>Pinoy Cooking</title>" +
+          "<author>Giada De Laurentiis</author>" +
+          "<year>2005</year>" +
+          "<covercolor>Orange</covercolor>" +
+          "</book></bookstore>";
+
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(text,"text/xml");
+
+  document.getElementById("demo").innerHTML =
+          xmlDoc.getElementsByTagName("covercolor")[0].childNodes[0].nodeValue;
+
+  document.getElementById("demo2").innerHTML =
+          xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+
+  document.getElementById("author").innerHTML =
+          xmlDoc.getElementsByTagName("author")[0].childNodes[0].nodeValue;
+
+  document.getElementById("year").innerHTML =
+          xmlDoc.getElementsByTagName("year")[0].childNodes[0].nodeValue;
+</script>
+
+</body>
+</html>
